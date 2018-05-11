@@ -38,10 +38,11 @@ int main(int argc, char *argv[]){ //Get an array of chars (which we put an IP in
     fsize = sizeof(from); //Get the size of form
     recvfrom(socket_fd, &msg, 100,0,(struct sockaddr *)&from,&fsize);  //Receive the messege. Through the socket_ft we read the messege, &msg point to the msg which we read into it, we get the max size of msg in bits, 0 is flag which help us see if connection is closed, from point to the structure which contain IP and port of the sender and fsize point to the local variable which will contain the size of the sockaddr_in structure. The function return the size of bits that received and if it returns -1 it means that there is a problem.
     printf("Got data: %s\n",msg);
-    if(strcmp(msg, "Disconnected.\n") == 0 || strcmp(msg, "Client disconnected.") == 0){
-      break;
-    }
-    else{
+    // if(strcmp(msg, "Disconnected.\n") == 0 || strcmp(msg, "Client disconnected.") == 0){
+    //   break;
+    // }
+    // else{
+    if(strcmp(msg, "Messege deleted.\n") != 0 && strcmp(msg, "Client disconnected.") != 0){
       printf("Enter messege:\n");
       fgets(msg, 1000, stdin);
       char msgs [1000];

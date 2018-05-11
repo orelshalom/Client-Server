@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){ //Get an array of chars (which we put an IP in
   s_in.sin_addr.s_addr = htonl(INADDR_ANY); //Convert the IPv4 address in binary representation, in one 4-bytes integer (s_addr), to network representation with the function htonl() which host to network long.
   s_in.sin_port = htons((u_short)0x3333); //Convert the port number to Host Byte Order representation with the function htons() which host to network short.
 
-  printsin( &s_in, "RECV_UDP", "Local socket is:"); 
+  printsin(&s_in, "RECV_UDP", "Local socket is:"); 
   fflush(stdout);//Flushes the output buffer of the stream. 
 
   bind(socket_fd, (struct sockaddr *)&s_in, sizeof(s_in));  //This function connect address and port with socket. Socket_fd is the socket descriptor which return by the function socket() (before the division to server and client), s_in point to the structure sockaddr_in which contain address and port of server which we connect to, and get the size of s_in in bits. The function return -1 if there is any problem.

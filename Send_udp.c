@@ -31,12 +31,12 @@ int main(int argc, char *argv[]){ //Get an array of chars (which we put an IP in
   //msgbuf.body = htonl(getpid()); 
   //msgbuf.tail = '>';
 
-  sendto(socket_fd,&myName,sizeof(myName),0,(struct sockaddr *)&dest,sizeof(dest));//Send the messege. Through the socket_fd we send the info, &myName point to th info we send, we get the lenght of it in bits, &dest point to the struct sockaddr which contain the ip and he port of the destination and get the lenght of it. 
+  sendto(socket_fd,&myName, sizeof(myName), 0, (struct sockaddr *)&dest, sizeof(dest));//Send the messege. Through the socket_fd we send the info, &myName point to th info we send, we get the lenght of it in bits, &dest point to the struct sockaddr which contain the ip and he port of the destination and get the lenght of it. 
 
   while(1) {
     fsize = sizeof(from); //Get the size of form
-    recvfrom(socket_fd, &yourName, 100,0,(struct sockaddr *)&from,&fsize);  //Receive the messege. Through the socket_ft we read the messege, &msg point to the msg which we read into it, we get the max size of msg in bits, 0 is flag which help us see if connection is closed, from point to the structure which contain IP and port of the sender and fsize point to the local variable which will contain the size of the sockaddr_in structure. The function return the size of bits that received and if it returns -1 it means that there is a problem.
-    printf("Got data ::%s\n",yourName);
+    recvfrom(socket_fd, &yourName, 100, 0,(struct sockaddr *)&from, &fsize);  //Receive the messege. Through the socket_ft we read the messege, &msg point to the msg which we read into it, we get the max size of msg in bits, 0 is flag which help us see if connection is closed, from point to the structure which contain IP and port of the sender and fsize point to the local variable which will contain the size of the sockaddr_in structure. The function return the size of bits that received and if it returns -1 it means that there is a problem.
+    printf("Got data ::%s\n", yourName);
     fflush(stdout); //Flushes the output buffer of the stream.    
   }
   return 0;

@@ -65,12 +65,12 @@ int main(int argc, char *argv[]){ //Get an array of chars (which we put an IP in
     recvfrom(socket_fd, &msg, 100,0,(struct sockaddr *)&from,&fsize);  //Receive the messege. Through the socket_ft we read the messege, &msg point to the msg which we read into it, we get the max size of msg in bits, 0 is flag which help us see if connection is closed, from point to the structure which contain IP and port of the sender and fsize point to the local variable which will contain the size of the sockaddr_in structure. The function return the size of bits that received and if it returns -1 it means that there is a problem.    
     if(from.sin_port == 1500){
         if(strcmp(msg, "exit\n") == 0){
-            printf("Exiting.");
+            // printf("Exiting.");
             strcpy(msg, "Client disconnected.");
             sendto(socket_fd,&msg,100,0,(struct sockaddr *)&server,sizeof(server));
             strcpy(msg, "Disconnected.\n");
             sendto(socket_fd,&msg,100,0,(struct sockaddr *)&client,sizeof(client));   
-            break;
+            // break;
         }
         else{
             printf("Enter number between 0 to 1:\n");  
@@ -83,12 +83,13 @@ int main(int argc, char *argv[]){ //Get an array of chars (which we put an IP in
                 sendto(socket_fd,&msg,100,0,(struct sockaddr *)&server,sizeof(server));
             }
             else{ 
-                printf("Exiting.");
+                // printf("Exiting.");
                 strcpy(msg, "Messege deleted.\n");
+                printf("%s", msg);
                 sendto(socket_fd,&msg,100,0,(struct sockaddr *)&client,sizeof(client));
-                strcpy(msg, "Disconnected.\n");
+                // strcpy(msg, "Disconnected.\n");
                 sendto(socket_fd,&msg,100,0,(struct sockaddr *)&server,sizeof(server));
-                break;
+                // break;
             }
         }
     }
